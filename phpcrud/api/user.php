@@ -56,7 +56,8 @@ switch($method)
         $username= $userpostdata->username;
         $useremail= $userpostdata->email;
         $status= $userpostdata->status;
-        $result= mysqli_query($db_conn, "INSERT INTO tbl_user (username, useremail, status) 
+        $password= password_hash($userpostdata->$password);
+        $result= mysqli_query($db_conn, "INSERT INTO tbl_user (username, useremail,password, status) 
         VALUES('$username', '$useremail', '$status')");
 
         if($result)
